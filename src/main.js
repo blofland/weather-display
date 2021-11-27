@@ -1,6 +1,8 @@
 const [getStore, setStore] = useStorage("searches", [])
 
 document.querySelector("form").addEventListener("submit", handleSearch)
+document.querySelector("button").addEventListener("click", clearHistory)
+
 
 function handleSearch(e) {
     e.preventDefault()
@@ -25,7 +27,7 @@ function popluateHistory(activeCity){
     currentStore.forEach((search) => {
         
         const link = document.createElement("a")
-        link.addEventListener("click", ()=>{})
+        link.addEventListener("click", searchCity)
 
         const li = document.createElement("li")
         const className = search === activeCity ? "active" : "text-muted" 
@@ -41,4 +43,8 @@ async function searchCity(e) {
     const city = e.target.innerText
     const weatherData = await getWeather(city)
     popluateHistory(city)
+}
+
+function clearHistory(e){
+    setStore(s => [])
 }
