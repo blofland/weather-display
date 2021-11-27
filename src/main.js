@@ -14,4 +14,9 @@ const getWeather = (city) => {
     return prom 
 }
 
+const getCoordForCity = async city =>{
+    const firstUrl = baseUrl + "/weather?q=" + city + "&appid=" + appId 
+    return fetch(firstUrl).then(res => res.json())
+}
+
 getWeather("Salt Lake City")
