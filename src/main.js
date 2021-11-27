@@ -15,8 +15,13 @@ const getWeather = (city) => {
 }
 
 const getCoordForCity = async city =>{
-    const firstUrl = baseUrl + "/weather?q=" + city + "&appid=" + appId 
-    return fetch(firstUrl).then(res => res.json())
+    const url = baseUrl + "/weather?q=" + city + "&appid=" + appId 
+    return await fetch(url).then(res => res.json())
+}
+
+const getDataFromCoord = coord => {
+    const url = `${baseUrl}/onecall?lat=${weatherData.coord.lat}&lon=${weatherData.coord.lon}&appid=${appId}&units=imperial`
+    return await fetch(url).then(res=> res.json())
 }
 
 getWeather("Salt Lake City")
