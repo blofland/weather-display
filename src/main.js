@@ -16,3 +16,24 @@ function addSearchToStorage(city){
     })
 }
 
+function popluateHistory(activeCity){
+    const currentStore = getStore()
+    const list = document.getElementById("search-history-list")
+    list.innerHTML= ""
+
+    currentStore.forEach((search) => {
+        
+        const link = document.createElement("a")
+        link.addEventListener("click", ()=>{})
+
+        const li = document.createElement("li")
+        const className = search === activeCity ? "active" : "text-muted" 
+        li.className = className
+        li.innerText = search
+
+        list.append(list)
+        li.append(link)
+    })
+}
+
+
