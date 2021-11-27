@@ -14,6 +14,7 @@ function addSearchToStorage(city){
         s.unshift(city)
         return s 
     })
+    popluateHistory(city)
 }
 
 function popluateHistory(activeCity){
@@ -36,4 +37,8 @@ function popluateHistory(activeCity){
     })
 }
 
-
+async function searchCity(e) {
+    const city = e.target.innerText
+    const weatherData = await getWeather(city)
+    popluateHistory(city)
+}
