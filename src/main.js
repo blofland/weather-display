@@ -19,8 +19,8 @@ const getCoordForCity = async city =>{
     return await fetch(url).then(res => res.json())
 }
 
-const getDataFromCoord = coord => {
-    const url = `${baseUrl}/onecall?lat=${weatherData.coord.lat}&lon=${weatherData.coord.lon}&appid=${appId}&units=imperial`
+const getDataFromCoord = async coord => {
+    const url = `${baseUrl}/onecall?lat=${coord.lat}&lon=${coord.lon}&appid=${appId}&units=imperial`
     return await fetch(url).then(res=> res.json())
 }
 
