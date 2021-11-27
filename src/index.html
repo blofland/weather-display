@@ -14,10 +14,35 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     </head>
     <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        
+
+        <!-- The main header of the body -->
+        <header class="text-center bg-dark text-white p-3">
+            <h1>Weather Forecast</h1>
+        </header>
+
+        <!-- Row to wrap around the rest of the view -->
+        <div class="row" name="body-wrapper">
+            <!-- This column wraps around the side navigation for searching or selecting cities -->
+            <div class="col-sm-6 col-md-4 col-lg-3 p-3">
+                <div class="row">
+                    <section class="col bg-light">
+                        <h2 class="text-center">Search by city</h2>
+                        <!-- The Search Form -->
+                        <div id="form-container" class="container">
+                            <form>
+                                <input type="text" placeholder="Salt Lake City, UT" class="form-control">
+                            </form>
+                        </div>
+                        <div class="m-3">
+                            <button type="button" id="clear-history" class="btn mb-3 btn-secondary btn-block">Clear</button>
+                            <!-- The list group that holds all the links to previous cities searched -->
+                            <ul class="list-group list-group-flush" id="search-history-list" >                
+                            </ul> 
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
         <script src="" async defer></script>
     </body>
 </html>
