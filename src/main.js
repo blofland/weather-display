@@ -3,6 +3,12 @@ const [getStore, setStore] = useStorage("searches", [])
 document.querySelector("form").addEventListener("submit", handleSearch)
 document.querySelector("button").addEventListener("click", clearHistory)
 
+function setDefault(){
+    const list = document.getElementById("search-history-list")
+    list.innerHTML= ""
+    display()
+}
+
 
 function handleSearch(e) {
     e.preventDefault()
