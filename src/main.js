@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", async () =>{
     if(currentCity){
         const weatherData = await getWeather(currentCity)
         display(weatherData)
-        addSearchToHistory(currentCity)
+        addSearchToStorage(currentCity)
     } else {
         setDefault()
     }
@@ -38,10 +38,10 @@ function addSearchToStorage(city){
         s.unshift(city)
         return s 
     })
-    popluateHistory(city)
+    populateHistory(city)
 }
 
-function popluateHistory(activeCity){
+function populateHistory(activeCity){
     const currentStore = getStore()
     const list = document.getElementById("search-history-list")
     list.innerHTML= ""
@@ -64,11 +64,13 @@ function popluateHistory(activeCity){
 async function searchCity(e) {
     const city = e.target.innerText
     const weatherData = await getWeather(city)
-    popluateHistory(city)
+    display(weatherData)
+    populateHistory(city)
 }
 
 function clearHistory(e){
     setStore(s => [])
+    setDefault()
 }
 
 function display(weatherData){    
