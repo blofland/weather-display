@@ -25,11 +25,16 @@ function setDefault(){
 
 async function handleSearch(e) {
     e.preventDefault()
-    const searchValue = e.target.elements[0].searchValue
+    const searchValue = e.target.elements[0].value
+    try {
     const weatherData = await getWeather(searchValue)
     display(weatherData)
     addSearchToStorage(weatherData.current.city)
     e.target.reset()
+    } catch(err){
+        console.error(err)
+        alert("Check you're spelling and try again")
+    }
 }
 
 function addSearchToStorage(city){
@@ -52,7 +57,7 @@ function populateHistory(activeCity){
         link.addEventListener("click", searchCity)
 
         const li = document.createElement("li")
-        const className = search === activeCity ? "active" : "text-muted" 
+        const className = search === activeCity ? "active list-group-item" : "text-muted list-group-item" 
         li.className = className
         li.innerText = search
 

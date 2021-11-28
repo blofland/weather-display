@@ -5,7 +5,6 @@ const baseUrl = "https://api.openweathermap.org/data/2.5"
 const getWeather = async (city) => {
     // Make API Calls
     // Return an object that holds information about current and forecast
-    try {
         let weatherData = await getCoordForCity(city)
         weatherData = {...weatherData, ...await getDataFromCoord(weatherData.coord)}
         const current = {
@@ -34,10 +33,6 @@ const getWeather = async (city) => {
             }
         })
         return {current, forecast}
-    } catch(err){
-        console.error(err)
-        alert("Looks like that was a bad request, check your spelling and try again")
-    }
 }
 
 const getCoordForCity = async city =>{
