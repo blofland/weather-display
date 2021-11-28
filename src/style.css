@@ -1,3 +1,23 @@
 html, body {
     height: 100vh;
 }
+
+nav {
+    min-height: 50vh;
+}
+
+a {
+    cursor: pointer;
+}
+
+button {
+    width: 100%;
+}
+
+main{
+    display: none
+}
+
+img{
+    max-width: 75px;
+}

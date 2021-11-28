@@ -5,7 +5,7 @@ const useStorage = (name="data", defaultObj={}) => {
     const getStore = () => JSON.parse(localStorage.getItem(name)) 
     const setStore = (cb) => {
         let data 
-        if(typeof cb === "function") data = cb(store()) 
+        if(typeof cb === "function") data = cb(getStore()) 
         else data = cb
         localStorage.setItem(name, JSON.stringify(data))
     }

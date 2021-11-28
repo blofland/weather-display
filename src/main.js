@@ -3,7 +3,7 @@ const [getStore, setStore] = useStorage("searches", [])
 document.querySelector("form").addEventListener("submit", handleSearch)
 document.querySelector("button").addEventListener("click", clearHistory)
 document.addEventListener("DOMContentLoaded", async () =>{
-    const currentCity = store()[0]
+    const currentCity = getStore()[0]
     if(currentCity){
         const weatherData = await getWeather(currentCity)
         display(weatherData)
@@ -23,7 +23,7 @@ function setDefault(){
 }
 
 
-function handleSearch(e) {
+async function handleSearch(e) {
     e.preventDefault()
     const searchValue = e.target.elements[0].searchValue
     const weatherData = await getWeather(searchValue)
@@ -56,8 +56,8 @@ function populateHistory(activeCity){
         li.className = className
         li.innerText = search
 
-        list.append(list)
-        li.append(link)
+        list.append(link)
+        link.append(li)
     })
 }
 
@@ -89,7 +89,7 @@ function displayForecast(weatherData){
         row.append(col)
 
         const card = document.createElement("div")
-        card.className("text-white bg-secondary p-3 mb-3 card mx-auto")
+        card.className = "text-white bg-secondary p-3 mb-3 card mx-auto"
         col.append(card)
 
         const img = document.createElement("img")
