@@ -27,6 +27,9 @@ function handleSearch(e) {
     e.preventDefault()
     const searchValue = e.target.elements[0].searchValue
     const weatherData = await getWeather(searchValue)
+    display(weatherData)
+    addSearchToStorage(weatherData.current.city)
+    e.target.reset()
 }
 
 function addSearchToStorage(city){
