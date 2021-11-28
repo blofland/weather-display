@@ -49,7 +49,51 @@ function clearHistory(e){
     setStore(s => [])
 }
 
-function display(weatherData){
+function display(weatherData){    
+    const row = document.querySelector("#forecast-cards")
+    row.innerHTML = ""
+    weatherData.forEach(day => {
+        const col = document.createElement("div")
+        col.className = "col"
+        row.append(col)
+
+        const card = document.createElement("div")
+        card.className("text-white bg-secondary p-3 mb-3 card mx-auto")
+        col.append(card)
+
+        const img = document.createElement("img")
+        img.className="card-image-top"
+        img.src = day.icon
+        card.append(img)
+
+        const cardBody = document.createElement("div")
+        cardBody.className="card-body"
+        card.append(cardBody)
+
+        const dateTitle = document.createElement("h5")
+        dateTitle.className = "card-title"
+        dateTitle.innerText = new Date(day.dt).toDateString()
+        card.append(dateTitle)
+
+        const temp = document.createElement("div")
+        temp.className="card-text"
+        temp.innerText = `Temp: ${day.temp}°F`
+        card.append(temp)
+
+        const wind = document.createElement("div")
+        wind.className = "card-text"
+        wind.innerText = `Wind: ${day.wind} MPH`
+        card.append(wind)
+
+        const humidity = document.createElement("div")
+        humidity.className = "card-text"
+        humidity.innerText = `Humidity: ${day.humidity} MPH`
+        card.append(humidity)
+
+    })
+}
+
+function displayCurrent(data){
     document.querySelector("#city-name").innerText = data.city
     document.querySelector("#current-icon").src = data.icon 
     document.querySelector("#current-date").innerText = new Date(data.dt).toDateString()
