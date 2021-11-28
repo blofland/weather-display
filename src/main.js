@@ -50,5 +50,12 @@ function clearHistory(e){
 }
 
 function display(weatherData){
-    
+    document.querySelector("#city-name").innerText = data.city
+    document.querySelector("#current-icon").src = data.icon 
+    document.querySelector("#current-date").innerText = new Date(data.dt).toDateString()
+    const currentDataNodes = document.querySelectorAll("#current-weather li span")
+    currentDataNodes[0].innerText = data.temp
+    currentDataNodes[1].innerText = data.wind 
+    currentDataNodes[2].innerText = data.humidity 
+    currentDataNodes[3].innerText = data.uvi
 }
