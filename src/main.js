@@ -50,6 +50,13 @@ function clearHistory(e){
 }
 
 function display(weatherData){    
+    if(!weatherData) return document.querySelector("main").style.display = "none"
+    document.querySelector("main").style.display = "block"
+    displayCurrent(weatherData.current)
+    displayForecast(weatherData.forecast)
+ }
+
+function displayForecast(weatherData){
     const row = document.querySelector("#forecast-cards")
     row.innerHTML = ""
     weatherData.forEach(day => {
@@ -91,6 +98,7 @@ function display(weatherData){
         card.append(humidity)
 
     })
+  
 }
 
 function displayCurrent(data){
