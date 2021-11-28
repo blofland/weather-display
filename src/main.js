@@ -2,6 +2,19 @@ const [getStore, setStore] = useStorage("searches", [])
 
 document.querySelector("form").addEventListener("submit", handleSearch)
 document.querySelector("button").addEventListener("click", clearHistory)
+document.addEventListener("DOMContentLoaded", async () =>{
+    const currentCity = store()[0]
+    if(currentCity){
+        const weatherData = await getWeather(currentCity)
+        display(weatherData)
+        addSearchToHistory(currentCity)
+    } else {
+        setDefault()
+    }
+})
+
+
+
 
 function setDefault(){
     const list = document.getElementById("search-history-list")
