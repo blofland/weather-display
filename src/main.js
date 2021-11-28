@@ -48,3 +48,7 @@ async function searchCity(e) {
 function clearHistory(e){
     setStore(s => [])
 }
+
+function display(weatherData){
+    
+}
